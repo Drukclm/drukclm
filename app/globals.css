@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark mode colors (unchanged) */
+  --background-dark: #111827;
+  --foreground-dark: #f9fafb;
+  --primary-dark: #6366f1;
+  --secondary-dark: #a855f7;
+  --accent-dark: #f59e0b;
+  --neon-dark: #06b6d4;
+
+  /* Sunset-inspired light mode colors */
+  --background-light: #fef3e2;     
+  --surface-light: #fed7aa;        
+  --card-light: #fde68a;          
+  --foreground-light: #7c2d12;     
+  --primary-light: #ea580c;        
+  --secondary-light: #dc2626;      
+  --accent-light: #f59e0b;         
+  --sun-glow: #fb923c;            
+  --border-light: #fed7aa;         
+  --muted-light: #fef3e2;          
+}
+
+/* Light mode default styles */
+html {
+  --color-background: var(--background-light);
+  --color-surface: var(--surface-light);
+  --color-card: var(--card-light);
+  --color-foreground: var(--foreground-light);
+  --color-primary: var(--primary-light);
+  --color-secondary: var(--secondary-light);
+  --color-accent: var(--accent-light);
+  --color-neon: var(--sun-glow);
+  --color-border: var(--border-light);
+  --color-muted: var(--muted-light);
+}
+
+/* Dark mode overrides - keep original colors */
+html.dark {
+  --color-background: var(--background-dark);
+  --color-surface: var(--background-dark);
+  --color-card: #1f2937;
+  --color-foreground: var(--foreground-dark);
+  --color-primary: var(--primary-dark);
+  --color-secondary: var(--secondary-dark);
+  --color-accent: var(--accent-dark);
+  --color-neon: var(--neon-dark);
+  --color-border: #374151;
+  --color-muted: #1f2937;
+}
+
+html, body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-geist-sans);
+}
+
+/* Wave animation - updated for sunset colors */
+.wave-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23fff7ed' fill-opacity='1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transition: background 0.3s ease;
+}
+
+.dark .wave {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23111827' fill-opacity='1' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,181.3C960,181,1056,235,1152,234.7C1248,235,1344,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* Glow effects */
+.neon-glow {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+.sun-glow {
+  text-shadow: 0 0 12px rgba(251, 146, 60, 0.4), 0 0 24px rgba(251, 146, 60, 0.2);
+}
+
+.dark .sun-glow {
+  text-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+}
+
+/* Custom scrollbar with sunset colors */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Dark mode scrollbar colors */
+.dark ::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes sunPulse {
+  0% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.8; transform: scale(1); }
+}
+
+.sun-pulse {
+  animation: sunPulse 2s infinite ease-in-out;
+}
+
+@keyframes sunsetGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.sunset-gradient {
+  background: linear-gradient(-45deg, #fef3e2, #fed7aa, #fde68a, #fb923c);
+  background-size: 400% 400%;
+  animation: sunsetGradient 8s ease infinite;
+  transition: background 0.3s ease;
+}
+
+/* Utility classes for sunset theme */
+.bg-sunset-primary {
+  background-color: var(--color-primary);
+  transition: background-color 0.3s ease;
+}
+
+.bg-sunset-surface {
+  background-color: var(--color-surface);
+  transition: background-color 0.3s ease;
+}
+
+.bg-sunset-card {
+  background-color: var(--color-card);
+  transition: background-color 0.3s ease;
+}
+
+.text-sunset-primary {
+  color: var(--color-primary);
+  transition: color 0.3s ease;
+}
+
+.text-sunset-foreground {
+  color: var(--color-foreground);
+  transition: color 0.3s ease;
+}
+
+.border-sunset {
+  border-color: var(--color-border);
+  transition: border-color 0.3s ease;
+}
+
+/* Gradient utilities */
+.gradient-sunset {
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 50%, #f59e0b 100%);
+}
+
+.gradient-sunset-text {
+  background: linear-gradient(135deg, #ea580c 0%, #dc2626 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Ensure dark mode gradient text works */
+.dark .gradient-sunset-text {
+  background: linear-gradient(135deg, #67e8f9 0%, #3b82f6 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Card hover effects */
+.sunset-card-hover {
+  transition: all 0.3s ease;
+}
+
+.sunset-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(234, 88, 12, 0.1), 0 0 20px rgba(251, 146, 60, 0.1);
+}
+
+.dark .sunset-card-hover:hover {
+  box-shadow: 0 20px 40px rgba(6, 182, 212, 0.1), 0 0 20px rgba(103, 232, 249, 0.1);
+}
+
+/* Additional theme-aware elements */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+ 
