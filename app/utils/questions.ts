@@ -2025,7 +2025,7 @@ export const questions = {
                 },
                 {
                     question_number: '8',
-                    question: "Was the location not very far or hard to travel to?",
+                    question: "Was the location very far or hard to travel to?",
                     type: "radio",
                     label: ['Yes', 'No'],
                     editable: true,
@@ -2801,7 +2801,7 @@ export const questions = {
                 },
                 {
                     question_number: '8',
-                    question: "Was the location not very far or hard to travel to?",
+                    question: "Was the location  very far or hard to travel to?",
                     type: "radio",
                     label: ['Yes', 'No'],
                     editable: true,
@@ -3577,7 +3577,7 @@ export const questions = {
                 },
                 {
                     question_number: '8',
-                    question: "Was the location not very far or hard to travel to?",
+                    question: "Was the location  very far or hard to travel to?",
                     type: "radio",
                     label: ['Yes', 'No'],
                     editable: true,
