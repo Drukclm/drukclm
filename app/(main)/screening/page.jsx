@@ -119,43 +119,102 @@ function ScreeningForm() {
 
 
 
-    useEffect(() => {
-        async function fetchFacilities() {
-            const { data, error } = await supabase
-                .from('facility_name')
-                .select(`
-                id, name,
+    // useEffect(() => {
+    //     async function fetchFacilities() {
+    //         const { data, error } = await supabase
+    //             .from('facility_name')
+    //             .select(`
+    //             id, name,
+    //             facility_location (
+    //                 id, name,
+    //                 region:region_id (
+    //                     id, name
+    //                 )
+    //             )
+    //         `);
+
+    //         if (data) {
+    //             setFacilityOptions(data.map(f => ({ id: f.id, name: f.name })));
+    //             const map = {};
+    //             const dzkFacilities = {};
+    //             const dzkRegion = {};
+    //             data.forEach(f => {
+    //                 const dzongkhag = f.facility_location?.name || '';
+    //                 const region = f.facility_location?.region?.name || '';
+    //                 map[f.id] = { location: dzongkhag, region };
+    //                 // Build Dzongkhag → Facilities
+    //                 if (dzongkhag) {
+    //                     if (!dzkFacilities[dzongkhag]) dzkFacilities[dzongkhag] = [];
+    //                     dzkFacilities[dzongkhag].push({ id: f.id, name: f.name });
+    //                     dzkRegion[dzongkhag] = region;
+    //                 }
+    //             });
+    //             setFacilityMap(map);
+    //             setDzongkhagFacilities(dzkFacilities);
+    //             setDzongkhagRegion(dzkRegion);
+    //         }
+    //     }
+    //     fetchFacilities();
+    // }, []);
+useEffect(() => {
+    async function fetchFacilities() {
+        const { data, error } = await supabase
+            .from('facility_name')
+            .select(`
+                id, 
+                name, 
+                service_facility(name),
                 facility_location (
-                    id, name,
+                    id, 
+                    name,
                     region:region_id (
-                        id, name
+                        id, 
+                        name
                     )
                 )
             `);
 
-            if (data) {
-                setFacilityOptions(data.map(f => ({ id: f.id, name: f.name })));
-                const map = {};
-                const dzkFacilities = {};
-                const dzkRegion = {};
-                data.forEach(f => {
-                    const dzongkhag = f.facility_location?.name || '';
-                    const region = f.facility_location?.region?.name || '';
-                    map[f.id] = { location: dzongkhag, region };
-                    // Build Dzongkhag → Facilities
-                    if (dzongkhag) {
-                        if (!dzkFacilities[dzongkhag]) dzkFacilities[dzongkhag] = [];
-                        dzkFacilities[dzongkhag].push({ id: f.id, name: f.name });
-                        dzkRegion[dzongkhag] = region;
-                    }
-                });
-                setFacilityMap(map);
-                setDzongkhagFacilities(dzkFacilities);
-                setDzongkhagRegion(dzkRegion);
-            }
+        if (error) {
+            console.error("Error fetching facilities:", error);
+            return;
         }
-        fetchFacilities();
-    }, []);
+
+        if (data) {
+            // Map for dropdown: "Facility Name + Service Type"
+            setFacilityOptions(
+                data.map(f => ({
+                    id: f.id,
+                    name: `${f.name} ${f.service_facility?.name || ""}`.trim()
+                }))
+            );
+
+            const dzkFacilities = {};
+            const dzkRegion = {};
+
+            data.forEach(f => {
+                const dzongkhag = f.facility_location?.name || '';
+                const region = f.facility_location?.region?.name || '';
+
+                if (dzongkhag) {
+                    if (!dzkFacilities[dzongkhag]) dzkFacilities[dzongkhag] = [];
+
+                    // Combine Facility Name + Service Type
+                    const displayName = `${f.name} ${f.service_facility?.name || ""}`.trim();
+
+                    dzkFacilities[dzongkhag].push({ id: f.id, name: displayName });
+                    dzkRegion[dzongkhag] = region;
+                }
+            });
+
+            setDzongkhagFacilities(dzkFacilities);
+            setDzongkhagRegion(dzkRegion);
+        }
+    }
+
+    fetchFacilities();
+}, []);
+
+
 
     useEffect(() => {
         if (networkParam && questions[networkParam]) {
