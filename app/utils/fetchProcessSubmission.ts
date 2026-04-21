@@ -426,10 +426,20 @@ export function calculateServiceAvailability(submissions: any[]) {
     serviceMappings.forEach(({ sought: soughtKey, received: receivedKey, label }) => {
         let soughtCount = 0;
         let receivedCount = 0;
+        // submissions.forEach((s) => {
+        //     if (s.answers?.[soughtKey] === "Yes") soughtCount++;
+        //     if (s.answers?.[receivedKey] === "Yes") receivedCount++;
+        // });
         submissions.forEach((s) => {
-            if (s.answers?.[soughtKey] === "Yes") soughtCount++;
-            if (s.answers?.[receivedKey] === "Yes") receivedCount++;
-        });
+    // Ensure received is only counted if the service was first sought
+    if (s.answers?.[soughtKey] === "Yes") {
+        soughtCount++;
+
+        if (s.answers?.[receivedKey] === "Yes") {
+            receivedCount++;
+        }
+    }
+});
         categories.push(label);
         sought.push(soughtCount);
         received.push(receivedCount);
