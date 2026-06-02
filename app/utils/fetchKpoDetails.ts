@@ -783,15 +783,31 @@ export function getKpoServiceAvailabilityStats(submissions: any[], kpoName: stri
     // Submissions for this KPO only
     //submissions.filter(s => s.network === kpoName);
 
+const kpoSought: number[] = [];
+const kpoReceived: number[] = [];
 
+for (const service of serviceMappings) {
+    let soughtCount = 0;
+    let receivedCount = 0;
 
-    const kpoSought = serviceMappings.map(({ sought }) =>
-        kpoSubs.reduce((acc, s) => acc + (s.answers?.[sought] === "Yes" ? 1 : 0), 0)
-    );
-    const kpoReceived = serviceMappings.map(({ received }) =>
-        kpoSubs.reduce((acc, s) => acc + (s.answers?.[received] === "Yes" ? 1 : 0), 0)
-    );
+    for (const s of kpoSubs) {
 
+        if (s.answers?.[service.sought] === "Yes") {
+            soughtCount++;
+
+            if (s.answers?.[service.received] === "Yes") {
+                receivedCount++;
+            }
+        }
+
+    }
+
+    kpoSought.push(soughtCount);
+    kpoReceived.push(receivedCount);
+}
+    
+
+   
     // Table rows
     const table = serviceMappings.map((m, i) => {
         const sought = kpoSought[i];
