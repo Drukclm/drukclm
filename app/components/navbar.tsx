@@ -31,7 +31,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/screening-cpo', label: 'Screening' },
     { href: '/about', label: 'DrukCLM' },
-    { href: '/reports', label: 'Reports' },
+    { href: '/reports', label: 'Publications' },
     { href: '/statistics', label: 'Statistics' },
     { href: "/BeneficiaryForm", label: "Support Request" },
   ];
