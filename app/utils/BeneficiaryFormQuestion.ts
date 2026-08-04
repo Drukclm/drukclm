@@ -11,9 +11,91 @@ export const beneficiaryForm = {
           { question_number: "3", question: "Date of Birth", type: "date", placeholder: "Select your date of birth", required: true, editable: true },
           { question_number: "4", question: "Age", type: "number", placeholder: "Enter your age", required: true, editable: true },
           { question_number: "5", question: "CID Number", type: "number", placeholder: "Enter your 11-digit CID number", required: true, editable: true },
-          { question_number: "6", question: "Occupation", type: "text", placeholder: "Enter your current occupation", required: true, editable: true },
-          { question_number: "7", question: "Marital Status", type: "text", placeholder: "Enter your marital status", required: true, editable: true },
-          { question_number: "8", question: "Educational Qualification", type: "text", placeholder: "Enter your highest qualification", required: true, editable: true },
+        
+          {
+  question_number: "6",
+  question: "Occupation",
+  type: "select",
+  options: [
+    "Corporate employees",
+    "Drivers",
+    "Farmers",
+    "Civil servants",
+    "Housewives",
+    "Private/Business",
+    "Armed forces",
+    "Religious body",
+    "Sex Workers",
+    "Students/Trainees",
+    "Prisoner",
+    "Unemployed",
+    "local Govt",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your occupation",
+  required: true,
+  editable: true
+},
+{
+  question_number: "6.1",
+  question: "Specify Other Occupation",
+  type: "text",
+  placeholder: "Enter your occupation",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "6",
+    value: "Others (Specify)"
+  }
+},
+
+{
+  question_number: "7",
+  question: "Marital Status",
+  type: "select",
+  options: [
+    "Married",
+    "Single",
+    "Living together",
+    "Separated",
+    "Divorced",
+    "Widowed",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your marital status",
+  required: true,
+  editable: true
+},
+{
+  question_number: "7.1",
+  question: "Specify Other Marital Status",
+  type: "text",
+  placeholder: "Enter your marital status",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "7",
+    value: "Others (Specify)"
+  }
+},
+   {
+    question_number:"8",
+    question:"Educational Qualification",
+    type: "select",
+    options: [
+    "Primary school",
+    "Lower secondary",
+    "Middle secondary",
+    "Higher secondary",
+    "Certificate/Diploma",
+    "Bachelors and above",
+    "Monastic education",
+    "No schooling"
+  ],
+ placeholder: "Select your highest qualification",
+  required: true,
+  editable: true
+   } ,
           { question_number: "9", question: "Contact Number", type: "number", placeholder: "Enter your phone number", required: true, editable: true },
           { question_number: "10", question: "Email Address", type: "email", placeholder: "Enter your email address (e.g., you@example.com)", required: true, editable: true },
           { question_number: "11", question: "Present Address(Village, Gewog, Dzongkhag)", type: "text", placeholder: "Enter your current address", required: true, editable: true },
@@ -83,9 +165,90 @@ export const beneficiaryForm = {
           { question_number: "3", question: "Date of Birth", type: "date", placeholder: "Select your date of birth", required: true, editable: true },
           { question_number: "4", question: "Age", type: "number", placeholder: "Enter your age", required: true, editable: true },
           { question_number: "5", question: "CID Number", type: "number", placeholder: "Enter your 11-digit CID number", required: true, editable: true },
-          { question_number: "6", question: "Occupation", type: "text", placeholder: "Enter your current occupation", required: true, editable: true },
-          { question_number: "7", question: "Marital Status", type: "text", placeholder: "Enter your marital status", required: true, editable: true },
-          { question_number: "8", question: "Educational Qualification", type: "text", placeholder: "Enter your highest qualification", required: true, editable: true },
+         {
+  question_number: "6",
+  question: "Occupation",
+  type: "select",
+  options: [
+    "Corporate employees",
+    "Drivers",
+    "Farmers",
+    "Civil servants",
+    "Housewives",
+    "Private/Business",
+    "Armed forces",
+    "Religious body",
+    "Sex Workers",
+    "Students/Trainees",
+    "Prisoner",
+    "Unemployed",
+    "local Govt",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your occupation",
+  required: true,
+  editable: true
+},
+{
+  question_number: "6.1",
+  question: "Specify Other Occupation",
+  type: "text",
+  placeholder: "Enter your occupation",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "6",
+    value: "Others (Specify)"
+  }
+},
+
+{
+  question_number: "7",
+  question: "Marital Status",
+  type: "select",
+  options: [
+    "Married",
+    "Single",
+    "Living together",
+    "Separated",
+    "Divorced",
+    "Widowed",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your marital status",
+  required: true,
+  editable: true
+},
+{
+  question_number: "7.1",
+  question: "Specify Other Marital Status",
+  type: "text",
+  placeholder: "Enter your marital status",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "7",
+    value: "Others (Specify)"
+  }
+},
+   {
+    question_number:"8",
+    question:"Educational Qualification",
+    type: "select",
+    options: [
+    "Primary school",
+    "Lower secondary",
+    "Middle secondary",
+    "Higher secondary",
+    "Certificate/Diploma",
+    "Bachelors and above",
+    "Monastic education",
+    "No schooling"
+  ],
+ placeholder: "Select your highest qualification",
+  required: true,
+  editable: true
+   } ,
           { question_number: "9", question: "Contact Number", type: "number", placeholder: "Enter your phone number", required: true, editable: true },
           { question_number: "10", question: "Email Address", type: "email", placeholder: "Enter your email address (e.g., you@example.com)", required: true, editable: true },
           { question_number: "11", question: "Present Address(Village, Gewog, Dzongkhag)", type: "text", placeholder: "Enter your current address", required: true, editable: true },
@@ -155,9 +318,90 @@ export const beneficiaryForm = {
           { question_number: "3", question: "Date of Birth", type: "date", placeholder: "Select your date of birth", required: true, editable: true },
           { question_number: "4", question: "Age", type: "number", placeholder: "Enter your age", required: true, editable: true },
           { question_number: "5", question: "CID Number", type: "number", placeholder: "Enter your 11-digit CID number", required: true, editable: true },
-          { question_number: "6", question: "Occupation", type: "text", placeholder: "Enter your current occupation", required: true, editable: true },
-          { question_number: "7", question: "Marital Status", type: "text", placeholder: "Enter your marital status", required: true, editable: true },
-          { question_number: "8", question: "Educational Qualification", type: "text", placeholder: "Enter your highest qualification", required: true, editable: true },
+          {
+  question_number: "6",
+  question: "Occupation",
+  type: "select",
+  options: [
+    "Corporate employees",
+    "Drivers",
+    "Farmers",
+    "Civil servants",
+    "Housewives",
+    "Private/Business",
+    "Armed forces",
+    "Religious body",
+    "Sex Workers",
+    "Students/Trainees",
+    "Prisoner",
+    "Unemployed",
+    "local Govt",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your occupation",
+  required: true,
+  editable: true
+},
+{
+  question_number: "6.1",
+  question: "Specify Other Occupation",
+  type: "text",
+  placeholder: "Enter your occupation",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "6",
+    value: "Others (Specify)"
+  }
+},
+
+{
+  question_number: "7",
+  question: "Marital Status",
+  type: "select",
+  options: [
+    "Married",
+    "Single",
+    "Living together",
+    "Separated",
+    "Divorced",
+    "Widowed",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your marital status",
+  required: true,
+  editable: true
+},
+{
+  question_number: "7.1",
+  question: "Specify Other Marital Status",
+  type: "text",
+  placeholder: "Enter your marital status",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "7",
+    value: "Others (Specify)"
+  }
+},
+   {
+    question_number:"8",
+    question:"Educational Qualification",
+    type: "select",
+    options: [
+    "Primary school",
+    "Lower secondary",
+    "Middle secondary",
+    "Higher secondary",
+    "Certificate/Diploma",
+    "Bachelors and above",
+    "Monastic education",
+    "No schooling"
+  ],
+ placeholder: "Select your highest qualification",
+  required: true,
+  editable: true
+   } ,
           { question_number: "9", question: "Contact Number", type: "number", placeholder: "Enter your phone number", required: true, editable: true },
           { question_number: "10", question: "Email Address", type: "email", placeholder: "Enter your email address (e.g., you@example.com)", required: true, editable: true },
           { question_number: "11", question: "Present Address(Village, Gewog, Dzongkhag)", type: "text", placeholder: "Enter your current address", required: true, editable: true },
@@ -227,9 +471,90 @@ export const beneficiaryForm = {
           { question_number: "3", question: "Date of Birth", type: "date", placeholder: "Select your date of birth", required: true, editable: true },
           { question_number: "4", question: "Age", type: "number", placeholder: "Enter your age", required: true, editable: true },
           { question_number: "5", question: "CID Number", type: "number", placeholder: "Enter your 11-digit CID number", required: true, editable: true },
-          { question_number: "6", question: "Occupation", type: "text", placeholder: "Enter your current occupation", required: true, editable: true },
-          { question_number: "7", question: "Marital Status", type: "text", placeholder: "Enter your marital status", required: true, editable: true },
-          { question_number: "8", question: "Educational Qualification", type: "text", placeholder: "Enter your highest qualification", required: true, editable: true },
+         {
+  question_number: "6",
+  question: "Occupation",
+  type: "select",
+  options: [
+    "Corporate employees",
+    "Drivers",
+    "Farmers",
+    "Civil servants",
+    "Housewives",
+    "Private/Business",
+    "Armed forces",
+    "Religious body",
+    "Sex Workers",
+    "Students/Trainees",
+    "Prisoner",
+    "Unemployed",
+    "local Govt",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your occupation",
+  required: true,
+  editable: true
+},
+{
+  question_number: "6.1",
+  question: "Specify Other Occupation",
+  type: "text",
+  placeholder: "Enter your occupation",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "6",
+    value: "Others (Specify)"
+  }
+},
+
+{
+  question_number: "7",
+  question: "Marital Status",
+  type: "select",
+  options: [
+    "Married",
+    "Single",
+    "Living together",
+    "Separated",
+    "Divorced",
+    "Widowed",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your marital status",
+  required: true,
+  editable: true
+},
+{
+  question_number: "7.1",
+  question: "Specify Other Marital Status",
+  type: "text",
+  placeholder: "Enter your marital status",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "7",
+    value: "Others (Specify)"
+  }
+},
+   {
+    question_number:"8",
+    question:"Educational Qualification",
+    type: "select",
+    options: [
+    "Primary school",
+    "Lower secondary",
+    "Middle secondary",
+    "Higher secondary",
+    "Certificate/Diploma",
+    "Bachelors and above",
+    "Monastic education",
+    "No schooling"
+  ],
+ placeholder: "Select your highest qualification",
+  required: true,
+  editable: true
+   } ,
           { question_number: "9", question: "Contact Number", type: "number", placeholder: "Enter your phone number", required: true, editable: true },
           { question_number: "10", question: "Email Address", type: "email", placeholder: "Enter your email address (e.g., you@example.com)", required: true, editable: true },
           { question_number: "11", question: "Present Address(Village, Gewog, Dzongkhag)", type: "text", placeholder: "Enter your current address", required: true, editable: true },
@@ -299,9 +624,94 @@ export const beneficiaryForm = {
           { question_number: "3", question: "Date of Birth", type: "date", placeholder: "Select your date of birth", required: true, editable: true },
           { question_number: "4", question: "Age", type: "number", placeholder: "Enter your age ", required: true, editable: true },
           { question_number: "5", question: "CID Number", type: "number", placeholder: "Enter your 11-digit CID number", required: true, editable: true },
-          { question_number: "6", question: "Occupation", type: "text", placeholder: "Enter your current occupation", required: true, editable: true },
-          { question_number: "7", question: "Marital Status", type: "text", placeholder: "Enter your marital status", required: true, editable: true },
-          { question_number: "8", question: "Educational Qualification", type: "text", placeholder: "Enter your highest qualification", required: true, editable: true },
+
+{
+  question_number: "6",
+  question: "Occupation",
+  type: "select",
+  options: [
+    "Corporate employees",
+    "Drivers",
+    "Farmers",
+    "Civil servants",
+    "Housewives",
+    "Private/Business",
+    "Armed forces",
+    "Religious body",
+    "Sex Workers",
+    "Students/Trainees",
+    "Prisoner",
+    "Unemployed",
+    "local Govt",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your occupation",
+  required: true,
+  editable: true
+},
+{
+  question_number: "6.1",
+  question: "Specify Other Occupation",
+  type: "text",
+  placeholder: "Enter your occupation",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "6",
+    value: "Others (Specify)"
+  }
+},
+
+{
+  question_number: "7",
+  question: "Marital Status",
+  type: "select",
+  options: [
+    "Married",
+    "Single",
+    "Living together",
+    "Separated",
+    "Divorced",
+    "Widowed",
+    "Others (Specify)"
+  ],
+  placeholder: "Select your marital status",
+  required: true,
+  editable: true
+},
+{
+  question_number: "7.1",
+  question: "Specify Other Marital Status",
+  type: "text",
+  placeholder: "Enter your marital status",
+  required: true,
+  editable: true,
+  conditionalOn: {
+    question: "7",
+    value: "Others (Specify)"
+  }
+},
+   {
+    question_number:"8",
+    question:"Educational Qualification",
+    type: "select",
+    options: [
+    "Primary school",
+    "Lower secondary",
+    "Middle secondary",
+    "Higher secondary",
+    "Certificate/Diploma",
+    "Bachelors and above",
+    "Monastic education",
+    "No schooling"
+  ],
+ placeholder: "Select your highest qualification",
+  required: true,
+  editable: true
+   } , 
+
+
+         
           { question_number: "9", question: "Contact Number", type: "number", placeholder: "Enter your phone number", required: true, editable: true },
           { question_number: "10", question: "Email Address", type: "email", placeholder: "Enter your email address (e.g., you@example.com)", required: true, editable: true },
           { question_number: "11", question: "Present Address(Village, Gewog, Dzongkhag)", type: "text", placeholder: "Enter your current address", required: true, editable: true },
