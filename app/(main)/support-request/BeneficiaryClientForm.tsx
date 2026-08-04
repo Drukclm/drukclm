@@ -104,15 +104,18 @@ export default function BeneficiaryForm() {
     try {
 // changes for select
       const finalAnswers={...formData}
-      if (finalAnswers["6"] === "Others (Specify)") {
-    finalAnswers["6"] = finalAnswers["6.1"];
-    delete finalAnswers["6.1"];
-  }
+  
 
-  if (finalAnswers["7"] === "Others (Specify)") {
-    finalAnswers["7"] = finalAnswers["7.1"];
-    delete finalAnswers["7.1"];
-  }
+if (finalAnswers["6"] === "Others (Specify)" && finalAnswers["6.1"]) {
+  finalAnswers["6"] = finalAnswers["6.1"];
+  delete finalAnswers["6.1"];
+}
+
+
+if (finalAnswers["7"] === "Others (Specify)" && finalAnswers["7.1"]) {
+  finalAnswers["7"] = finalAnswers["7.1"];
+  delete finalAnswers["7.1"];
+}
       const submissionPayload = {
         kpo_name: networkParam,
         answers: finalAnswers,
