@@ -102,9 +102,20 @@ export default function BeneficiaryForm() {
     setIsSubmitting(true);
     setSubmissionError(null);
     try {
+// changes for select
+      const finalAnswers={...formData}
+      if (finalAnswers["6"] === "Others (Specify)") {
+    finalAnswers["6"] = finalAnswers["6.1"];
+    delete finalAnswers["6.1"];
+  }
+
+  if (finalAnswers["7"] === "Others (Specify)") {
+    finalAnswers["7"] = finalAnswers["7.1"];
+    delete finalAnswers["7.1"];
+  }
       const submissionPayload = {
         kpo_name: networkParam,
-        answers: formData,
+        answers: finalAnswers,
       };
       const { data, error } = await supabase
         .from("support_request")
@@ -157,6 +168,17 @@ export default function BeneficiaryForm() {
     let isValid = true;
     const errors: Record<string, string> = {};
     current.questions.forEach((question: any) => {
+      // conditional question exists but the user did not select the required option, ignore that question.
+      if (
+      question.conditionalOn &&
+      !(
+        formData[question.conditionalOn.question] ===
+        question.conditionalOn.value
+      )
+    ) {
+      return;
+    }
+
       const value = formData[question.question_number];
       if (
         question.required &&
